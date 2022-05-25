@@ -1,4 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-INDEX
+
+<h3>
+	{% if request.session.count %}
+		{{ request.session.count }}
+	{% else %}
+		0
+	{% endif %}
+</h3>
+
+<form method="POST">
+	{% csrf_token %}
+	<button class="btn" name="count">&plus;</button>
+</form>
+
 {% endblock content %}
